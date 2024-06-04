@@ -18,8 +18,21 @@ filesLines() {
 	count=0
 	while IFS= read -r line; do
 		count=$((count + 1))
-		echo $count
+		#echo $line #to see packages, descomenta
 	done <$packagesFile
 }
 
+update() {
+	count=0
+	while IFS= read -r line; do
+		count=$((count + 1))
+	done <$packagesFile
+	echo "Packages file are Update, you have $count packages!"
+	echo "The last package is $package"
+}
+
 createFile
+echo "Type the name of package you wanna add"
+read package
+echo "$package" >>$packagesFile
+update
