@@ -1,11 +1,12 @@
 #!/bin/bash
 
 logDIR="$HOME/.SSIP_logs/"
+packagesFile="$HOME/.packagesFile"
 
 checkDir() {
 	if [ -d $HOME/.SSIP_logs ]; then
 		echo "SSIP directory for Packages logs already exists!"
-		echo "Paht: ~/.SSIP_logs/"
+		echo "Path: ~/.SSIP_logs/"
 	else
 		echo "Creating SSIP directory for Packages logs..."
 		mkdir $HOME/.SSIP_logs
@@ -14,10 +15,17 @@ checkDir() {
 	fi
 }
 
+readPackages() {
+	while IFS= read -r package; do
+		echo "$package"
+	done <packagesFile
+}
+
 main() {
 	checkDir
-	sudo apt-get update -y >>"$logDIR/update.log"
-	sudo apt-get upgrade -y >>"$logDIR/upgrade.log"
+	readPackages
+	#sudo apt-get update -y >>"$logDIR/update.log"
+	#sudo apt-get upgrade -y >>"$logDIR/upgrade.log"
 }
 
 main
