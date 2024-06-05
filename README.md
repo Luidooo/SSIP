@@ -6,6 +6,9 @@ I wrote this thinking in debian based distros, but i wanna increment to arch bas
 
 just clone this repository and run:
 ```bash                                                                                           
+cd SSIP
+```                                                                                               
+```bash                                                                                           
 make install -s
 ```                                                                                               
 
