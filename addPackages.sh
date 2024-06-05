@@ -5,7 +5,7 @@ packagesFile="$HOME/.packagesFile"
 createFile() {
 	if [ -f $packagesFile ]; then
 		filesLines
-		echo "Packages File exist! and has $count lines"
+		echo "Packages File exist! and has $count packages"
 	else
 		echo "Packages File dind't exist."
 		echo "creating..."
@@ -18,7 +18,6 @@ filesLines() {
 	count=0
 	while IFS= read -r line; do
 		count=$((count + 1))
-		#echo $line #to see packages, descomenta
 	done <$packagesFile
 }
 

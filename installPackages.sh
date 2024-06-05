@@ -15,17 +15,17 @@ checkDir() {
 	fi
 }
 
-readPackages() {
+installPackages() {
 	while IFS= read -r package; do
-		echo "$package"
-	done <packagesFile
+		sudo apt install $package >>$logDIR/$package.log
+	done <$packagesFile
 }
 
 main() {
 	checkDir
-	readPackages
-	#sudo apt-get update -y >>"$logDIR/update.log"
-	#sudo apt-get upgrade -y >>"$logDIR/upgrade.log"
+	sudo apt-get update -y >>"$logDIR/update.log"
+	sudo apt-get upgrade -y >>"$logDIR/upgrade.log"
+	installPackages
 }
 
 main

@@ -12,7 +12,9 @@ seePackages() {
 	if [ -f $packagesFile ]; then
 		filesLines
 		echo "You have $count Packages!"
+		echo ""
 		allPackages
+		echo ""
 		echo "To add more packages call 'addPackages' "
 	else
 		echo "Packages File dind't exist."
