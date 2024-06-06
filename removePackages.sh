@@ -30,13 +30,12 @@ remove() {
 		if [ "$package" == "$line" ]; then
 			echo "Package found on line $packageline!"
 			sed -i "/$package/d" "$packagesFile"
-		fi
-		if [ $packageline == $count ]; then
-			echo "Dint find the package :( "
 			find=$true
-
 		fi
 	done <$packagesFile
+	if [ $find ]; then
+		echo "Dint find the package :( "
+	fi
 }
 
 createFile
